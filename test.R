@@ -40,5 +40,10 @@ shikuchoson[,3] <-substr(shikuchoson[,1],1,5)
 list3 <- left_join(list2,shikuchoson,by= c("V5"="V3"))
 
 
+#書き出し
 write.csv(list3,"list-utf8.csv",fileEncoding = "UTF8")
 write.csv(list3,"list-sjis.csv",fileEncoding = "cp932")
+
+#変更があったもの
+henko <- filter(list3,is.na(V2.x) | is.na(V2.y) | is.na(V2.x.x))
+write.csv(henko,"henko-sjis.csv",fileEncoding = "cp932")
